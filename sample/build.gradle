@@ -4,7 +4,7 @@ apply plugin: "kotlin"
 mainClassName = "com.aafanasev.fonoapi.sample.KotlinSample"
 
 dependencies {
-    compile project(":library")
+    compile project(":fonoapi")
     compile "org.jetbrains.kotlin:kotlin-stdlib"
 }
 
