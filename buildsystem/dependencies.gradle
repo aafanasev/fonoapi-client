@@ -3,3 +3,14 @@ ext.fonoapi = [
         name   : "fonoapi",
         version: "1.0"
 ]
+
+ext.versions = [
+        retrofit: "2.3.0"
+]
+
+ext.libraries = [
+        kotlinStdLib  : "org.jetbrains.kotlin:kotlin-stdlib",
+        retrofit      : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitGson  : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        retrofitRxJava: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+]

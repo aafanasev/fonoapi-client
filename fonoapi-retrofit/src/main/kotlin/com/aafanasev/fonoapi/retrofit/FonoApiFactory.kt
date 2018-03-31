@@ -1,4 +1,4 @@
-package com.aafanasev.fonoapi
+package com.aafanasev.fonoapi.retrofit
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -6,14 +6,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class FonoApiFactory {
 
-    private companion object {
-        private const val BASE_URL = "https://fonoapi.freshpixl.com/"
-    }
-
     @JvmOverloads
     fun create(okHttpClient: OkHttpClient? = null): FonoApiService = run {
         val retrofitBuilder = Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
 
         okHttpClient?.let {

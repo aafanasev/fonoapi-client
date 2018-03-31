@@ -1,2 +1,2 @@
-include "fonoapi", "sample"
+include "fonoapi", "fonoapi-retrofit", "fonoapi-rxjava", "sample"
 
