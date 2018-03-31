@@ -2,16 +2,23 @@
 
 package com.aafanasev.fonoapi.sample
 
-import com.aafanasev.fonoapi.DeviceEntity
-import io.reactivex.functions.Consumer
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level
 import com.aafanasev.fonoapi.retrofit.FonoApiFactory as RetrofitFonoApiFactory
 import com.aafanasev.fonoapi.rxjava.FonoApiFactory as ReactiveFonoApiFactory
 
 // TODO: https://fonoapi.freshpixl.com/token/generate
 const val token = ""
+
+val okHttpClient: OkHttpClient by lazy {
+    val logger = HttpLoggingInterceptor()
+    logger.level = Level.BASIC
+
+    OkHttpClient.Builder()
+            .addInterceptor(logger)
+            .build()
+}
 
 fun main(args: Array<String>) {
     showcaseRetrofit()
@@ -21,29 +28,21 @@ fun main(args: Array<String>) {
 fun showcaseRetrofit() {
     println("-- showcaseRetrofit --")
 
-    val fonoApi = RetrofitFonoApiFactory().create()
+    val fonoApi = RetrofitFonoApiFactory().create(okHttpClient)
 
-    fonoApi.getLatest(token, "google").enqueue(object : Callback<List<DeviceEntity>> {
-        override fun onResponse(call: Call<List<DeviceEntity>>, response: Response<List<DeviceEntity>>) {
-            response.body()?.forEach {
-                println(it.deviceName)
-            }
-        }
-
-        override fun onFailure(call: Call<List<DeviceEntity>>, t: Throwable) = t.printStackTrace()
-
-    })
+    val response = fonoApi.getLatest(token, "google").execute()
+    response.body()?.forEach {
+        println(it.deviceName)
+    }
 }
 
 fun showcaseRxJava() {
     println("-- showcaseRxJava --")
 
-    val fonoApi = ReactiveFonoApiFactory().create()
+    val fonoApi = ReactiveFonoApiFactory().create(okHttpClient)
 
-    fonoApi.getDevice(token, "pixel").subscribe(Consumer {
-        it.forEach {
-            println(it.deviceName)
-        }
-    })
-
+    val response = fonoApi.getDevice(token, "pixel").blockingGet()
+    response.forEach {
+        println(it.deviceName)
+    }
 }

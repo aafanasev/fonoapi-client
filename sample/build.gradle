@@ -1,5 +1,6 @@
 apply plugin: "application"
 apply plugin: "kotlin"
+apply from: "$rootDir/buildsystem/dependencies.gradle"
 
 mainClassName = "com.aafanasev.fonoapi.sample.KotlinSample"
 
@@ -7,6 +8,7 @@ dependencies {
     compile project(":fonoapi")
     compile project(":fonoapi-retrofit")
     compile project(":fonoapi-rxjava")
-    compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile libraries.kotlinStdLib
+    compile "com.squareup.okhttp3:logging-interceptor:3.10.0"
 }
 
