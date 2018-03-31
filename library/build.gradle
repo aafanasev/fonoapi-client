@@ -12,7 +12,8 @@ dependencies {
     def retrofit_version = "2.3.0"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "$retrofit_group:retrofit:$retrofit_version"
     implementation "$retrofit_group:converter-gson:$retrofit_version"
+
+    compile "$retrofit_group:retrofit:$retrofit_version"
     // compile "$retrofit_group:adapter-rxjava2:$retrofit_version"
 }
