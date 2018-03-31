@@ -4,6 +4,8 @@
 
 ## Usage
 
+Java
+
 ```java
 FonoApiService api = new FonoApiFactory().create();
         
@@ -22,9 +24,11 @@ api.getLatest("<token>", "samsung", 10).enqueue(new Callback<List<DeviceEntity>>
 });
 ```
 
+More samples in Kotlin and Java you can find [here](/sample/)
+
 ## Install
 
-Maven:
+Maven
 
 ```xml
 <dependency>
@@ -35,7 +39,7 @@ Maven:
 </dependency>
 ```
 
-Gradle:
+Gradle
 
 ```groovy
 compile 'com.aafanasev:fonoapi-retrofit:1.0'
