@@ -3,4 +3,5 @@ apply from: "$rootDir/buildsystem/dependencies.gradle"
 
 dependencies {
     implementation libraries.kotlinStdLib
+    implementation libraries.retrofitGson
 }

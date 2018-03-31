@@ -9,7 +9,7 @@ version = fonoapi.version
 
 dependencies {
     compile project(":fonoapi")
-
+    compile libraries.kotlinStdLib
     compile libraries.retrofit
     implementation libraries.retrofitGson
 }
