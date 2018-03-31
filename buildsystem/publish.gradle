@@ -8,7 +8,7 @@ publishing {
             artifact sourcesJar
             artifact javadocJar
             groupId fonoapi.group
-            artifactId fonoapi.name
+            artifactId libName
             version fonoapi.version
         }
     }
@@ -22,7 +22,7 @@ bintray {
 
     pkg {
         repo = "maven"
-        name = fonoapi.name
+        name = libName
 
         vcsUrl = "https://github.com/aafanasev/fonoapi-client.git"
 
@@ -33,7 +33,7 @@ bintray {
 
         version {
             name = fonoapi.version
-            desc = "FonoApi - Java client"
+            desc = libDesc
             released = new Date()
         }
     }
