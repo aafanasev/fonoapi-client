@@ -1,0 +1,5 @@
+ext.fonoapi = [
+        group  : "com.aafanasev",
+        name   : "fonoapi",
+        version: "1.0"
+]

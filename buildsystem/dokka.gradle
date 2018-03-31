@@ -1,0 +1,16 @@
+apply plugin: "org.jetbrains.dokka"
+
+dokka {
+    outputFormat = "javadoc"
+    outputDirectory = "$buildDir/javadoc"
+}
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: dokka) {
+    classifier = "javadoc"
+    from dokka.outputDirectory
+}

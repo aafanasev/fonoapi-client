@@ -1,0 +1,41 @@
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.bintray"
+
+publishing {
+    publications {
+        FonoApi(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId fonoapi.group
+            artifactId fonoapi.name
+            version fonoapi.version
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+    publications = ["FonoApi"]
+
+    pkg {
+        repo = "maven"
+        name = fonoapi.name
+
+        vcsUrl = "https://github.com/aafanasev/fonoapi-client.git"
+
+        labels = ["fonoapi"]
+        licenses = ["Apache-2.0"]
+
+        publicDownloadNumbers = true
+
+        version {
+            name = fonoapi.version
+            desc = "FonoApi - Java client"
+            released = new Date()
+        }
+    }
+
+}

@@ -1,0 +1,11 @@
+# trash
+.DS_Store
+Thumbs.db
+
+# gradle
+.gradle
+build
+
+# IDE
+/.idea
+*.iml
