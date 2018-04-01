@@ -42,5 +42,13 @@ Maven
 Gradle
 
 ```groovy
+// add repository
+repositories {
+    maven {
+        url 'https://dl.bintray.com/aafanasev/maven'
+    }
+}
+
+// add dependency
 compile 'com.aafanasev:fonoapi-retrofit:1.0'
 ```

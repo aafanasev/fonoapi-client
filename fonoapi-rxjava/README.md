@@ -34,5 +34,13 @@ Maven
 Gradle
 
 ```groovy
+// add repository
+repositories {
+    maven {
+        url 'https://dl.bintray.com/aafanasev/maven'
+    }
+}
+
+// add dependency
 compile 'com.aafanasev:fonoapi-rxjava:1.0'
 ```
